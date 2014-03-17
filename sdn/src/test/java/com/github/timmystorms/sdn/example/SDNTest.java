@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.timmystorms.sdn.example.entity.Person;
 import com.github.timmystorms.sdn.example.entity.Post;
-import com.github.timmystorms.sdn.example.entity.Vote;
 import com.github.timmystorms.sdn.example.repository.PersonRepository;
 import com.github.timmystorms.sdn.example.repository.PostRepository;
 
@@ -69,7 +68,7 @@ public class SDNTest {
     public void failScoreValidation() {
         final Person john = new Person("John", "Doe").persist();
         final Post post = new Post("SDN Example", "Description").persist();
-        new Vote(john, post, 20).persist();
+        john.likes(post, 10);
     }
 
     @Test
