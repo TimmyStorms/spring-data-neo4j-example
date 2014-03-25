@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
 import org.springframework.data.neo4j.aspects.config.Neo4jAspectConfiguration;
 import org.springframework.data.neo4j.config.EnableNeo4jRepositories;
@@ -39,6 +40,7 @@ import org.springframework.data.neo4j.fieldaccess.TransientFieldAccessorFactory;
 import org.springframework.data.neo4j.mapping.Neo4jPersistentEntity;
 import org.springframework.data.neo4j.mapping.Neo4jPersistentProperty;
 import org.springframework.data.neo4j.support.Neo4jTemplate;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -48,6 +50,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @ComponentScan("com.github.timmystorms.sdn.example")
 @EnableNeo4jRepositories(basePackages = { "com.github.timmystorms.sdn.example.repository" })
 @EnableTransactionManagement(mode = AdviceMode.ASPECTJ)
+@Import(RepositoryRestMvcConfiguration.class)
 public class SDNConfiguration extends Neo4jAspectConfiguration {
     
     public SDNConfiguration() {
